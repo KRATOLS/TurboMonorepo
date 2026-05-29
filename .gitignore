@@ -1,0 +1,66 @@
+# Dependencies
+node_modules
+**/node_modules
+.pnpm-store
+
+# Nuxt build outputs
+.nuxt
+.output
+dist
+build
+
+# Nuxt generated files
+**/.nuxt
+**/.output
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Editor directories and files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+*.swp
+*~
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Test coverage
+coverage
+*.lcov
+
+# Temporary folders
+tmp
+temp
+.cache
+
+# Turbo repo
+.turbo
+
+# Local Netlify folder
+.netlify
+
+# Vite
+vite.config.ts.timestamp-*
+
+# Nuxt DevTools
+.ntr

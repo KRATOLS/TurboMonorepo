@@ -1,0 +1,48 @@
+<!-- apps/web/pages/index.vue -->
+<template>
+  <div class="container">
+    <Card>
+      <template #header>
+        <h1>Веб-приложение</h1>
+      </template>
+
+      <p>Привет, {{ userName }}!</p>
+      <p>Сегодня: {{ todayFormatted }}</p>
+
+      <div style="margin-top: 16px">
+        <BaseButton variant="primary" @click="handleClick">
+          Нажми меня
+        </BaseButton>
+      </div>
+    </Card>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { formatDate } from '@repo/shared/utils'
+import type { User } from '@repo/shared/types'
+
+const userName = ref('Гость')
+const today = ref(new Date())
+const todayFormatted = computed(() => formatDate(today.value))
+
+const handleClick = () => {
+  alert('Кнопка нажата!')
+}
+
+// Пример использования типа User
+const currentUser: User = {
+  id: 1,
+  name: 'Иван',
+  email: 'ivan@example.com',
+  role: 'user'
+}
+</script>
+
+<style scoped>
+.container {
+  max-width: 600px;
+  margin: 48px auto;
+  padding: 0 16px;
+}
+</style>

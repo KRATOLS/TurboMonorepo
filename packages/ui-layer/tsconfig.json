@@ -1,0 +1,28 @@
+// packages/ui-layer/tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",  // ← ключевое изменение
+    "resolveJsonModule": true,
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vue"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "nuxt.config.ts",
+    "components/**/*.vue",
+    "components/**/*.ts",
+    "composables/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".nuxt", ".output"]
+}
