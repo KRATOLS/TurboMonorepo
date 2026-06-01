@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+
 interface Props {
   variant?: 'primary' | 'secondary' | 'danger'
   disabled?: boolean
@@ -19,6 +20,7 @@ const {
   variant = 'primary',
   disabled = false
 } = defineProps<Props>()
+
 
 const emit = defineEmits<{
   (e: 'click'): void

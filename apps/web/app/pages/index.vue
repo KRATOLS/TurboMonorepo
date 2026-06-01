@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import { formatDate } from '@repo/shared/utils'
+import {onMounted} from "vue";
 import type { User } from '@repo/shared/types'
 
 const userName = ref('Гость')
@@ -29,6 +30,26 @@ const todayFormatted = computed(() => formatDate(today.value))
 const handleClick = () => {
   alert('Кнопка нажата!')
 }
+
+onMounted(() => {
+  const getPosts = async () => {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    return await $fetch('https://jsonplaceholder.typicode.com/posts')
+  }
+
+  const { isPending, isFetching, isError, data, error } = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+  })
+
+  console.log('test fetch on tanstack query',{
+    isPending: isPending.value,
+    isFetching: isFetching.value,
+    isError: isError.value,
+    data,
+    error: error.value,
+  })
+})
 
 // Пример использования типа User
 const currentUser: User = {
