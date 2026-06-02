@@ -15,6 +15,8 @@
         </BaseButton>
       </div>
     </Card>
+
+    <Menu style="margin-top: 16px; margin-left: 16px" />
   </div>
 </template>
 
@@ -22,6 +24,8 @@
 import { formatDate } from '@repo/shared/utils'
 import {onMounted} from "vue";
 import type { User } from '@repo/shared/types'
+const runtimeConfig = useRuntimeConfig()
+console.log('runtime config', runtimeConfig.public)
 
 const userName = ref('Гость')
 const today = ref(new Date())
@@ -31,7 +35,7 @@ const handleClick = () => {
   alert('Кнопка нажата!')
 }
 
-onMounted(() => {
+onMounted(async () => {
   const getPosts = async () => {
     await new Promise(resolve => setTimeout(resolve, 2000))
     return await $fetch('https://jsonplaceholder.typicode.com/posts')
