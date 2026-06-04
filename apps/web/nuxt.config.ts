@@ -1,15 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-  pages: true,
   extends: [
-    '../../packages/ui-layer'  // Подключаем общий UI-слой
+    '../../packages/ui-layer', // Подключаем общий UI-слой
   ],
+  modules: ['@peterbud/nuxt-query', '@nuxt/eslint'],
+  pages: true,
+  devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      disabledPages: ''
-    }
+      disabledPages: '',
+    },
+  },
+  compatibilityDate: '2025-07-15',
+  typescript: {
+    typeCheck: true,
   },
   hooks: {
     'pages:extend'(pages) {
@@ -22,9 +26,8 @@ export default defineNuxtConfig({
           pages.splice(i, 1)
         }
       }
-    }
+    },
   },
-  modules: ['@peterbud/nuxt-query'],
   nuxtQuery: {
     autoImports: ['useQuery', 'useMutation'],
     devtools: true,
@@ -39,5 +42,5 @@ export default defineNuxtConfig({
         },
       },
     },
-  }
+  },
 })

@@ -1,16 +1,15 @@
 <!-- packages/ui-layer/components/BaseButton.vue -->
 <template>
   <button
-      :class="['base-button', `base-button--${variant}`]"
-      :disabled="disabled"
-      @click="emit('click')"
+    :class="['base-button', `base-button--${variant}`]"
+    :disabled="disabled"
+    @click="emit('click')"
   >
     <slot />
   </button>
 </template>
 
 <script setup lang="ts">
-
 interface Props {
   variant?: 'primary' | 'secondary' | 'danger'
   disabled?: boolean
@@ -18,13 +17,12 @@ interface Props {
 
 const {
   variant = 'primary',
-  disabled = false
+  disabled = false,
 } = defineProps<Props>()
 
 const emit = defineEmits<{
   (e: 'click'): void
 }>()
-
 </script>
 
 <style scoped>

@@ -1,17 +1,18 @@
 {
-  "name": "@repo/shared",
+  "name": "@repo/eslint-config",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "",
+  "main": "index.mjs",
   "exports": {
-    "./utils": "./utils/index.ts",
-    "./types": "./types/index.ts"
+    ".": "./index.mjs"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.js --max-warnings 50",
     "lint:fix": "eslint . --ext .ts,.mjs --fix"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*"
+    "@nuxt/eslint-config": "^1.15.2"
   }
 }

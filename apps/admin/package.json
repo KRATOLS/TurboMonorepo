@@ -3,6 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "lint": "eslint . --ext .ts,.js --max-warnings 50",
+    "lint:fix": "eslint . --ext .ts,.mjs --fix",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -15,6 +17,8 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
+    "@nuxt/eslint": "1.15.2",
+    "@repo/eslint-config": "workspace:*",
     "@repo/shared": "workspace:*",
     "@repo/ui-layer": "workspace:*"
   }

@@ -1,7 +1,7 @@
 <!-- apps/web/pages/index.vue -->
 <template>
   <div class="container">
-    <Card>
+    <BaseCard>
       <template #header>
         <h1>Веб-приложение</h1>
       </template>
@@ -10,22 +10,25 @@
       <p>Сегодня: {{ todayFormatted }}</p>
 
       <div style="margin-top: 16px">
-        <BaseButton variant="primary" @click="handleClick">
+        <BaseButton
+          variant="primary"
+          @click="handleClick"
+        >
           Нажми меня
         </BaseButton>
       </div>
-    </Card>
+    </BaseCard>
 
-    <Menu style="margin-top: 16px; margin-left: 16px" />
+    <MainMenu style="margin-top: 16px; margin-left: 16px" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { formatDate } from '@repo/shared/utils'
-import {onMounted} from "vue";
-import type { User } from '@repo/shared/types'
-const runtimeConfig = useRuntimeConfig()
-console.log('runtime config', runtimeConfig.public)
+import { onMounted } from 'vue'
+
+// Пример импорта типов
+// import type { User } from '@repo/shared/types'
 
 const userName = ref('Гость')
 const today = ref(new Date())
@@ -46,7 +49,7 @@ onMounted(async () => {
     queryFn: getPosts,
   })
 
-  console.log('test fetch on tanstack query',{
+  console.log('test fetch on tanstack query', {
     isPending: isPending.value,
     isFetching: isFetching.value,
     isError: isError.value,
@@ -56,12 +59,12 @@ onMounted(async () => {
 })
 
 // Пример использования типа User
-const currentUser: User = {
-  id: 1,
-  name: 'Иван',
-  email: 'ivan@example.com',
-  role: 'user'
-}
+// const currentUser: User = {
+//   id: 1,
+//   name: 'Иван',
+//   email: 'ivan@example.com',
+//   role: 'user',
+// }
 </script>
 
 <style scoped>

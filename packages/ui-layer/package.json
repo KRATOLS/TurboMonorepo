@@ -6,12 +6,18 @@
   "exports": {
     "./*": "./*"
   },
+  "scripts": {
+    "lint": "eslint . --ext .ts,.js --max-warnings 50",
+    "lint:fix": "eslint . --ext .ts,.mjs --fix"
+  },
   "dependencies": {
+    "@nuxt/kit": "^4.4.7",
     "nuxt": "^4.4.6",
     "vue": "^3.5.35"
   },
   "devDependencies": {
-    "@vue/tsconfig": "^0.9.1",
-    "@repo/shared": "workspace:*"
+    "@repo/shared": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@vue/tsconfig": "^0.9.1"
   }
 }
