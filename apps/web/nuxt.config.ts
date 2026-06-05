@@ -30,7 +30,6 @@ export default defineNuxtConfig({
   },
   nuxtQuery: {
     autoImports: ['useQuery', 'useMutation'],
-    devtools: true,
     queryClientOptions: {
       defaultOptions: {
         queries: {

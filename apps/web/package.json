@@ -12,11 +12,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.15.2",
+    "@nuxt/eslint": "catalog:",
     "@peterbud/nuxt-query": "^1.8.0",
-    "nuxt": "^4.4.6",
-    "vue": "^3.5.34",
-    "vue-router": "^5.0.7"
+    "nuxt": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
