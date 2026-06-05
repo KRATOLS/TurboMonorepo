@@ -20,6 +20,15 @@
     </BaseCard>
 
     <MainMenu style="margin-top: 16px; margin-left: 16px" />
+
+    <div style="margin-top: 8px">
+      <NuxtTime
+        :datetime="Date.now()"
+        year="numeric"
+        month="long"
+        day="numeric"
+      />
+    </div>
   </div>
 </template>
 
