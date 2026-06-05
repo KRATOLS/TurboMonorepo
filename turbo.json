@@ -1,6 +1,11 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["NODE_ENV", "NUXT_PUBLIC_DISABLED_PAGES"],
+  "globalDependencies": [
+    "**/.env.*local",
+    "**/tsconfig.json",
+    "**/eslint.config.mjs"
+  ],
   "tasks": {
     "lint": {
       "dependsOn": ["^lint"],
@@ -16,7 +21,21 @@
     },
     "build": {
       "dependsOn": ["^build", "^lint"],
-      "outputs": [".output/**"]
+      "outputs": [".output/**"],
+      "inputs": [
+        "app/**",
+        "components/**",
+        "pages/**",
+        "layouts/**",
+        "plugins/**",
+        "middleware/**",
+        "server/**",
+        "nuxt.config.ts",
+        "tsconfig.json",
+        "composables/**",
+        "assets/*",
+        "eslint.config.mjs"
+      ]
     },
     "preview": {
       "cache": false,

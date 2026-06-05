@@ -1,4 +1,4 @@
-# Пример организации монорепозитория
+# Описание монорепозитория
 
 ## 1. Структура:
 
@@ -59,8 +59,8 @@ packages:
   - "new/*"
 ```
 
-Также для того, чтобы пакет можно было подключить, необходимо указать **name** 
-в package.json пакета.
+Также для того, чтобы пакет можно было подключить, необходимо указать его **name** 
+в package.json.
 
 ```json5
 {
@@ -85,3 +85,107 @@ packages:
 
 ### 2.2 Подключение локального пакета
 
+Для подключения пакета требуется прописать его в devDependencies в
+package.json модуля, который его использует
+
+```json
+{
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*"
+  }
+}
+```
+
+При импорте vue компонентов в nuxt приложениях для удобства рекомендуется
+подключать их в nuxt конфиге через свойство **extends**
+
+```js
+export default defineNuxtConfig({
+  extends: [
+    '../../packages/ui-layer'
+    // Подключаем общий UI-слой
+  ]
+})
+```
+
+Для этого в пакете необходимо настроить резолвинг путей.
+Проще всего это сделать через **createResolver** от модуля **@nuxt/kit**
+
+```ts
+import { createResolver } from '@nuxt/kit'
+import { defineNuxtConfig } from 'nuxt/config'
+import type { NuxtConfig } from 'nuxt/config'
+
+const { resolve } = createResolver(import.meta.url)
+
+const config: NuxtConfig = {
+  compatibilityDate: '2025-05-28',
+  css: [resolve('./assets/style.css')],
+  components: [
+    { path: resolve('./components'), pathPrefix: false },
+  ],
+  imports: {
+    dirs: [resolve('./composables')],
+  },
+}
+
+export default defineNuxtConfig(config) as NuxtConfig
+```
+
+Подключая пакет таким образом в nuxt приложениях компоненты буду импортироваться
+автоматически в каждом месте, где они используются, даже не смотря на то, что они не
+находятся в каталоге самого приложения
+
+## 3. Turborepo
+
+Для управления монорепозиторием используются задачи turborepo, описанные в **turbo.json**
+
+На данный момент зарегистрированы следующие задачи:
+
+- lint - запуск проверки eslint правил
+- lint:fix - запуск фиксов eslint ошибок\предупреждений
+- dev - запуск дев билда
+- build - запуск продакшни билда
+- preview - запуск превью 
+
+Для того, чтобы задача выполнялась в необходимом модуле, необходимо 
+добавить ее в соответствующий package.json 
+
+````json5
+{
+  "name": "web",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --ext .ts,.js --max-warnings 50" /* Вызывается turbo */,
+    "lint:fix": "eslint . --ext .ts,.mjs --fix",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  }
+}
+````
+
+Для того чтобы выполнить задачу в конкретном модуле необходимо запустить ее
+с параметром --filter
+
+````code
+pnpm dev --filter=web
+````
+
+Таким образом, будет запущена дев сборка nuxt приложения **web**
+
+## 4. Динамический импорт
+
+В nuxt приложениях реализована возможность динамического импорта страниц.
+Для этого необходимо прописань в env **NUXT_PUBLIC_DISABLED_PAGES** названия страниц (компонентов) через запятую
+
+````code
+NUXT_PUBLIC_DISABLED_PAGES=users
+````
+
+При запуске билда с таким значением, env страница **users** будет исключена из итогового бандла.
+Также, благодаря тому, что переменная прокинута в **runtimeConfig** можно, например, исключить ссылку
+на данную страницу из главного меню или ридеректить на главную при попытке перехода на нее.
