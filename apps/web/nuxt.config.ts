@@ -4,8 +4,12 @@ export default defineNuxtConfig({
     '../../packages/ui-layer', // Подключаем общий UI-слой
   ],
   modules: ['@peterbud/nuxt-query', '@nuxt/eslint'],
+  ssr: false,
   pages: true,
   devtools: { enabled: true },
+  app: {
+    layoutTransition: { name: 'layout', mode: 'out-in' },
+  },
   runtimeConfig: {
     public: {
       disabledPages: '',
