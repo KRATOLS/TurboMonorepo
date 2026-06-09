@@ -1,29 +1,22 @@
-import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'node:path'
 
 export default defineNuxtConfig({
   extends: [
     '../../packages/ui-layer', // Подключаем общий UI-слой
   ],
-  modules: ['@peterbud/nuxt-query', '@nuxt/eslint', '@pinia/nuxt'],
+  modules: ['@peterbud/nuxt-query', '@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/hints'],
   ssr: false,
   pages: true,
   devtools: { enabled: true },
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
-  css: [resolve(__dirname, 'assets/css/main.css')],
   runtimeConfig: {
     public: {
       disabledPages: '',
     },
   },
   compatibilityDate: '2025-07-15',
-  vite: {
-    plugins: [
-      tailwindcss(),
-    ],
-  },
   typescript: {
     typeCheck: true,
   },

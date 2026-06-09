@@ -4,7 +4,7 @@
       <li
         v-for="page in pages"
         :key="page.path"
-        class="list-disc"
+        class="list-disc underline"
       >
         <NuxtLink :to="page.path">{{ page.name }}</NuxtLink>
       </li>
