@@ -18,7 +18,9 @@ const store = useUsersStore()
         :key="num"
         class="list-disc ml-5"
       >
-        Пользователь {{ num }}
+        <div class="flex gap-1 items-center">
+          <nuxt-icon name="commons/user"  /> Пользователь {{ num }}
+        </div>
       </li>
     </ul>
 

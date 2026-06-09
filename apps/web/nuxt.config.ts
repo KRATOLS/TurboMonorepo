@@ -4,7 +4,14 @@ export default defineNuxtConfig({
   extends: [
     '../../packages/ui-layer', // Подключаем общий UI-слой
   ],
-  modules: ['@peterbud/nuxt-query', '@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/hints'],
+  modules: [
+    '@peterbud/nuxt-query',
+    '@nuxt/eslint',
+    '@pinia/nuxt',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/hints',
+    'nuxt-icons',
+  ],
   ssr: false,
   pages: true,
   devtools: { enabled: true },
