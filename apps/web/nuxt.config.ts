@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   extends: [
     '../../packages/ui-layer', // Подключаем общий UI-слой
   ],
-  modules: ['@peterbud/nuxt-query', '@nuxt/eslint'],
+  modules: ['@peterbud/nuxt-query', '@nuxt/eslint', '@pinia/nuxt'],
   ssr: false,
   pages: true,
   devtools: { enabled: true },
@@ -53,5 +53,8 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  pinia: {
+    storesDirs: [resolve(__dirname, 'app/stores/**')],
   },
 })
