@@ -5,7 +5,9 @@ definePageMeta({
 </script>
 
 <template>
-  <h1>Пользователи</h1>
+  <h1 class="text-2xl font-bold m-3 ml-0">
+    Пользователи
+  </h1>
 </template>
 
 <style scoped>

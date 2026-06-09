@@ -1,4 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from '@tailwindcss/vite'
+import { resolve } from 'node:path'
+
 export default defineNuxtConfig({
   extends: [
     '../../packages/ui-layer', // Подключаем общий UI-слой
@@ -10,12 +12,18 @@ export default defineNuxtConfig({
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
+  css: [resolve(__dirname, 'assets/css/main.css')],
   runtimeConfig: {
     public: {
       disabledPages: '',
     },
   },
   compatibilityDate: '2025-07-15',
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
   typescript: {
     typeCheck: true,
   },

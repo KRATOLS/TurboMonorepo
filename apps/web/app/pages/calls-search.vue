@@ -6,19 +6,23 @@ counter.value ||= Math.round(Math.random() * 1000)
 
 <template>
   <div>
-    <h1>Поиск звонков</h1>
+    <h1 class="text-2xl font-bold m-3 ml-0">
+      Поиск звонков
+    </h1>
 
     <div>
       <h3>Counter: {{ counter || '-' }}</h3>
-      <button @click="counter = 0">
-        сброс
-      </button>
-      <button @click="counter--">
-        -
-      </button>
-      <button @click="counter++">
-        +
-      </button>
+      <div class="flex gap-2 mt-2">
+        <BaseButton @click="counter = 0">
+          сброс
+        </BaseButton>
+        <BaseButton @click="counter--">
+          -
+        </BaseButton>
+        <BaseButton @click="counter++">
+          +
+        </BaseButton>
+      </div>
     </div>
   </div>
 </template>

@@ -19,7 +19,7 @@
       </div>
     </BaseCard>
 
-    <MainMenu style="margin-top: 16px; margin-left: 16px" />
+    <MainMenu class="mt-5 ml-4" />
 
     <div style="margin-top: 8px">
       <NuxtTime
