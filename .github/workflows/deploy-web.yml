@@ -62,6 +62,7 @@ jobs:
           echo "Building Web for base URL: /$REPO_NAME/"
           
           export NUXT_APP_BASE_URL=/$REPO_NAME/
+          echo "NUXT_APP_BASE_URL is: $NUXT_APP_BASE_URL"
           pnpm exec turbo build --filter=web
 
       - name: Upload artifact
