@@ -27,7 +27,15 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   nitro: {
-    preset: 'github_pages',
+    preset: 'github-pages',
+    hooks: {
+      'prerender:generate'(route) {
+        // Создаём 404.html для SPA fallback на GitHub Pages[citation:5]
+        if (route.route === '/' || route.route === '') {
+          route.route = '/404.html'
+        }
+      },
+    },
   },
   typescript: {
     typeCheck: true,
