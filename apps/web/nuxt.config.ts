@@ -16,7 +16,12 @@ export default defineNuxtConfig({
   pages: true,
   devtools: { enabled: true },
   app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    buildAssetsDir: 'nuxt_assets',
     layoutTransition: { name: 'layout', mode: 'out-in' },
+  },
+  nitro: {
+    preset: 'github_pages',
   },
   runtimeConfig: {
     public: {
