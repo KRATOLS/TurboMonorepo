@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   pages: true,
   devtools: { enabled: true },
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    baseURL: process.env.NUXT_APP_BASE_URL || '/TurboMonorepo/',
     buildAssetsDir: 'nuxt_assets',
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
@@ -63,3 +63,4 @@ export default defineNuxtConfig({
     storesDirs: [resolve(__dirname, 'app/stores/**')],
   },
 })
+console.log('🔧 process.env.NUXT_APP_BASE_URL:', process.env.NUXT_APP_BASE_URL)
