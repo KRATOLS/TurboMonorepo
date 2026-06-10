@@ -54,7 +54,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install --filter web
+        run: pnpm install
 
       - name: Build Web app with Turbo
         run: |

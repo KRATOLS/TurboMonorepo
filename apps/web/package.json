@@ -26,7 +26,6 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/shared": "workspace:*",
-    "@repo/ui-layer": "workspace:*",
-    "vue-tsc": "^3.3.4"
+    "@repo/ui-layer": "workspace:*"
   }
 }
