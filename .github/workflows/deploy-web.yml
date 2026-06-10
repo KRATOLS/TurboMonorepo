@@ -59,22 +59,10 @@ jobs:
       - name: Build Web app with Turbo
         run: |
           REPO_NAME=$(echo "${{ github.repository }}" | cut -d '/' -f2)
-          echo "Building Web for base URL: /$REPO_NAME/web/"
+          echo "Building Web for base URL: /$REPO_NAME/"
           
-          export NUXT_APP_BASE_URL=/$REPO_NAME/web/
+          export NUXT_APP_BASE_URL=/$REPO_NAME/
           pnpm exec turbo build --filter=web
-          
-          # Создаём корневой index.html для редиректа
-          cd apps/web/.output/public
-          cat > index.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta http-equiv="refresh" content="0; url=./web/">
-            </head>
-            <body></body>
-          </html>
-          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

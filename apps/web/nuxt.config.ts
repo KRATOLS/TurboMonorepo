@@ -20,15 +20,15 @@ export default defineNuxtConfig({
     buildAssetsDir: 'nuxt_assets',
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
-  nitro: {
-    preset: 'github_pages',
-  },
   runtimeConfig: {
     public: {
       disabledPages: '',
     },
   },
   compatibilityDate: '2025-07-15',
+  nitro: {
+    preset: 'github_pages',
+  },
   typescript: {
     typeCheck: true,
   },
