@@ -19,7 +19,6 @@
     }
   },
   "include": [
-    "nuxt.config.ts",
     "components/**/*.vue",
     "components/**/*.ts",
     "composables/**/*.ts"
