@@ -76,10 +76,3 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-web
-
-      - name: Debug artifact structure
-        run: |
-          echo "=== Структура .output/public ==="
-          ls -la apps/web/.output/public/
-          echo "=== Проверяем наличие index.html ==="
-          find apps/web/.output/public -name "index.html" -type f
